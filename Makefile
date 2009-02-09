@@ -45,6 +45,7 @@ install:
 	mkdir -p $(DESTINATION_FOLDER)
 	ditto --noextattr --norsrc $(DICT_DEV_KIT_OBJ_DIR)/$(DICT_NAME).dictionary  $(DESTINATION_FOLDER)/$(DICT_NAME).dictionary
 	touch $(DESTINATION_FOLDER)
+	killall Spotlight
 	echo "Done."
 	echo "To test the new dictionary, try Dictionary.app."
 
