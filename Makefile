@@ -8,7 +8,7 @@
 
 # You need to edit these values.
 
-DICT_NAME		=	"jQuery API"
+DICT_NAME		=	"jQuery"
 DICT_SRC_PATH	=	dictionary.xml
 CSS_PATH		=	jquery_dictionary.css
 PLIST_PATH		=	jquery_dictionary.plist
