@@ -4,7 +4,12 @@
 d|entry {
 }
 
-h1	{
+p.title {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+h1 {
 	font-size: 150%;
 }
 

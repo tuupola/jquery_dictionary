@@ -78,6 +78,18 @@
     		<xsl:text>)</xsl:text>
     	</xsl:if>
     </xsl:template>
+    
+    <xsl:template name="name">
+    	<xsl:value-of select="@name"/>
+    	<xsl:if test="name(.) != 'property'">
+    	    <xsl:text>(</xsl:text>
+    	    <xsl:for-each select="params">
+    		    <xsl:value-of select="@name"/>
+    			<xsl:if test="position() != last()">, </xsl:if>
+    		</xsl:for-each>
+    		<xsl:text>)</xsl:text>
+    	</xsl:if>
+    </xsl:template>
 	
 	
     <xsl:template name="value">
@@ -142,7 +154,8 @@
     			    <xsl:call-template name="value" />
     		    </d:index>
 
-            	<h1><xsl:call-template name="title" /></h1>
+            	<p class="title"><xsl:call-template name="title" /></p>
+            	
         	    <xsl:for-each select="desc">
             	<p>
     		        <xsl:call-template name="break" />
