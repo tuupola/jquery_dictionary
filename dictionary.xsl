@@ -3,7 +3,7 @@
 <!-- http://jquery.bassistance.de/api-browser/                            -->
 <!-- http://jqueryjs.googlecode.com/svn/trunk/tools/api-browser/style.xsl -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:output method="xml" />
+    <xsl:output method="xml" indent="yes" />
     <xsl:variable name="lcletters">abcdefghijklmnopqrstuvwxyz</xsl:variable>
     <xsl:variable name="ucletters">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable>
 	
@@ -142,8 +142,8 @@
     </xsl:template>
 	
     <xsl:template match="/*">
+        <xsl:comment> This file is generated from api-1.3.xml using XSLT and dictionary.xsl </xsl:comment>
         <d:dictionary xmlns="http://www.w3.org/1999/xhtml" xmlns:d="http://www.apple.com/DTDs/DictionaryService-1.0.rng">
-        
     	<xsl:for-each select="//function|//selector|//property">
     		<xsl:sort select="translate(@name,'$.','')"/>
     		<xsl:sort select="count(params)"/>
@@ -194,7 +194,7 @@
     				<pre><code class="javascript"><xsl:value-of select="code"/></code></pre>
     				<xsl:if test="html">
     				    <h3>HTML:</h3>
-    				    <pre><code class="html"><xsl:value-of select="html"/></code></pre>
+    				    <pre><code class="html"><xsl:text>  </xsl:text><xsl:value-of select="html"/></code></pre>
     				</xsl:if>
     				<xsl:if test="results">
     				    <h3>Result:</h3>

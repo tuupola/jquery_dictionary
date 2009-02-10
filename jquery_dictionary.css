@@ -26,3 +26,8 @@ span.column {
 	margin-bottom: 0.5em;
 	padding: 0.5em;
 }
+
+pre {
+  background-color: #e8e8e8;
+  padding: 0.5em;
+}
