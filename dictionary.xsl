@@ -191,14 +191,26 @@
     			    <xsl:if test="desc">
     		            <p><xsl:value-of select="desc"/></p>
     			    </xsl:if>
-    				<pre><code class="javascript"><xsl:value-of select="code"/></code></pre>
+    				<pre><code class="javascript">
+		    			<xsl:call-template name="left-trim">
+							<xsl:with-param name="s" select="code" />
+		 				</xsl:call-template>			    			
+					</code></pre>
     				<xsl:if test="html">
     				    <h3>HTML:</h3>
-    				    <pre><code class="html"><xsl:text>  </xsl:text><xsl:value-of select="html"/></code></pre>
+    				    <pre><code class="html"><xsl:text>  </xsl:text>
+		    			<xsl:call-template name="left-trim">
+							<xsl:with-param name="s" select="html" />
+		 				</xsl:call-template>			    		
+					</code></pre>
     				</xsl:if>
     				<xsl:if test="results">
     				    <h3>Result:</h3>
-    					<pre><code class="html"><xsl:value-of select="results"/></code></pre>
+    					<pre><code class="html">
+    					<xsl:call-template name="left-trim">
+							<xsl:with-param name="s" select="results" />
+			 			</xsl:call-template>
+    					</code></pre>
     				</xsl:if>
     		    </xsl:for-each>
     	    </d:entry>
@@ -222,4 +234,22 @@
     	</xsl:choose>
     </xsl:template>
 
+	<xsl:template name="left-trim">
+	  <xsl:param name="s" />
+	  <xsl:choose>
+	    <xsl:when test="substring($s, 1, 1) = ''">
+	      <xsl:value-of select="$s"/>
+	    </xsl:when>
+	    <xsl:when test="normalize-space(substring($s, 1, 1)) = ''">
+	      <xsl:call-template name="left-trim">
+	        <xsl:with-param name="s" select="substring($s, 2)" />
+	      </xsl:call-template>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:value-of select="$s" />
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:template>
+
 </xsl:stylesheet>
+
