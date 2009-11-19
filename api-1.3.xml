@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<docs startdoc="API" timestamp="2009-05-27T22:08:08Z">
+<docs startdoc="API" timestamp="2009-11-18T03:41:26Z">
 	<info/>
 	<cat value="Core">
 		<subcat value="$(...) The jQuery Function">
-			<function cat="Core" name="jQuery" return="jQuery" timestamp="2009-05-15T04:52:43Z">
+			<function cat="Core" name="jQuery" return="jQuery" timestamp="2009-09-10T01:29:44Z">
 				<added>
 					1.0
 				</added>
@@ -59,7 +59,7 @@ See
 					</code>
 				</example>
 			</function>
-			<function cat="Core" name="jQuery" return="jQuery" timestamp="2009-05-15T04:52:43Z">
+			<function cat="Core" name="jQuery" return="jQuery" timestamp="2009-09-10T01:29:44Z">
 				<added>
 					1.0
 				</added>
@@ -67,7 +67,7 @@ See
 					Create DOM elements on-the-fly from the provided String of raw HTML.
 				</desc>
 				<longdesc>
-					&lt;p&gt;Simple elements without attributes, e.g., "&amp;lt;div /&amp;gt;", are created via document.createElement. All other cases are parsed by assigning the string to the .innerHTML property of a div element. The HTML string cannot contain elements that are invalid within a div, such as html, head, body, or title elements.&lt;/p&gt;
+					&lt;p&gt;Simple elements without attributes, e.g., "&amp;lt;div /&amp;gt;", are created via document.createElement. All other cases are parsed by assigning the string to the .innerHTML property of a div element. The HTML string cannot contain elements that are invalid within a div, such as html, head, body, or title elements.&lt;/p&gt;&lt;p&gt;All HTML must be well-formed, otherwise it may not work correctly across all browsers. This includes the case where &lt;code&gt;$("&amp;lt;span&amp;gt;")&lt;/code&gt; may not work but &lt;code&gt;$("&amp;lt;span/&amp;gt;")&lt;/code&gt; will (note the XML-style closing slash).&lt;/p&gt;
 				</longdesc>
 				<params name="html" type="String">
 					<desc>
@@ -88,15 +88,15 @@ See
 					</code>
 				</example>
 			</function>
-			<function cat="Core" name="jQuery" return="jQuery" timestamp="2009-05-15T04:52:43Z">
+			<function cat="Core" name="jQuery" return="jQuery" timestamp="2009-09-10T01:29:44Z">
 				<added>
 					1.0
 				</added>
 				<desc>
-					Wrap jQuery functionality around a single or multiple DOM Element(s).
+					Wrap jQuery functionality around a single or an array of DOM Element(s).
 				</desc>
 				<longdesc>
-					This function also accepts XML Documents and Window objects as valid arguments (even though they are not DOM Elements).
+					This function accepts XML Documents and Window objects as valid arguments even though they are not DOM Elements. It will also accept another jQuery object, effectively returning $(other.get()).
 				</longdesc>
 				<params name="elements" type="Element, Array&lt;Element&gt;">
 					<desc>
@@ -120,7 +120,7 @@ See
 					</code>
 				</example>
 			</function>
-			<function cat="Core" name="jQuery" return="jQuery" timestamp="2009-05-15T04:52:43Z">
+			<function cat="Core" name="jQuery" return="jQuery" timestamp="2009-09-10T01:29:44Z">
 				<added>
 					1.0
 				</added>
@@ -162,7 +162,7 @@ See ready(Function) for details about the ready event.
 			</function>
 		</subcat>
 		<subcat value="jQuery Object Accessors">
-			<function cat="Core" name="each" return="jQuery" timestamp="2009-04-17T20:37:15Z">
+			<function cat="Core" name="each" return="jQuery" timestamp="2009-11-03T23:43:21Z">
 				<added>
 					1.0
 				</added>
@@ -175,6 +175,9 @@ See ready(Function) for details about the ready event.
 Additionally, the function, when executed, is passed a single argument representing the position of the element in the matched set (integer, zero-index).
 
 Returning 'false' from within the each function completely stops the loop through all of the elements (this is like using a 'break' with a normal loop). Returning 'true' from within the loop skips to the next iteration (this is like using a 'continue' with a normal loop). 
+
+This function is not the same as 
+<![CDATA[<a href='Utilities/jQuery.each'>$.each()</a>]]>					 - which is used to iterate over anything, such as an array or generic object.
 				</longdesc>
 				<params name="callback" type="Function">
 					<desc>
@@ -383,12 +386,12 @@ $("span").text("There are " + n + " divs." + "Click to add more.");}).click(); /
 					</html>
 				</example>
 			</property>
-			<property cat="Core" name="context" return="Element" timestamp="2009-02-04T04:02:11Z">
+			<property cat="Core" name="context" return="Element" timestamp="2009-10-22T02:51:43Z">
 				<added>
 					1.3
 				</added>
 				<desc>
-					'''New in jQuery 1.3''' &lt;p&gt;The DOM node context originally passed to jQuery() (if none was passed then context will be equal to the document).&lt;/p&gt;
+					&lt;p&gt;'''New in jQuery 1.3''' The DOM node context originally passed to jQuery() (if none was passed then context will be equal to the document).&lt;/p&gt;
 				</desc>
 				<longdesc>
 					&lt;p&gt;Should be used in conjunction with selector to determine the exact query used. These two properties are mostly useful to plugin developers.&lt;/p&gt;
@@ -999,7 +1002,7 @@ mainNavLinks.click(function(){alert(mainNavLinks.index(this));});
 			</function>
 		</subcat>
 		<subcat value="Plugins">
-			<function cat="Core" name="jQuery.fn.extend" return="jQuery" timestamp="2009-01-25T04:04:07Z">
+			<function cat="Core" name="jQuery.fn.extend" return="jQuery" timestamp="2009-10-08T04:18:54Z">
 				<added>
 					1.0
 				</added>
@@ -1030,8 +1033,8 @@ mainNavLinks.click(function(){alert(mainNavLinks.index(this));});
 });
 					</code>
 					<results>
-						$("input[@type=checkbox]").check();
-$("input[@type=radio]").uncheck();
+						$("input:checkbox").check();
+$("input:radio").uncheck();
 					</results>
 				</example>
 			</function>
@@ -1244,7 +1247,7 @@ jQuery("div &gt; p").hide();
 					</css>
 				</example>
 			</selector>
-			<selector cat="Selectors" name="element" return="Array&lt;Element(s)&gt;" timestamp="2009-01-25T00:42:55Z">
+			<selector cat="Selectors" name="element" return="Array&lt;Element(s)&gt;" timestamp="2009-10-15T00:30:45Z">
 				<sample>
 					element
 				</sample>
@@ -1252,7 +1255,7 @@ jQuery("div &gt; p").hide();
 					1.0
 				</added>
 				<desc>
-					Matches all elements with the given name. 
+					Matches all elements with the given tag name. 
 				</desc>
 				<longdesc>
 					
@@ -1517,7 +1520,7 @@ jQuery("div &gt; p").hide();
 			</selector>
 		</subcat>
 		<subcat value="Hierarchy">
-			<selector cat="Selectors" name="descendant" return="Array&lt;Element(s)&gt;" timestamp="2009-01-25T00:32:08Z">
+			<selector cat="Selectors" name="descendant" return="Array&lt;Element(s)&gt;" timestamp="2009-11-03T08:37:36Z">
 				<sample>
 					ancestor descendant
 				</sample>
@@ -1525,7 +1528,7 @@ jQuery("div &gt; p").hide();
 					1.0
 				</added>
 				<desc>
-					Matches all descendant elements specified by "descendant" of elements specified by "ancestor".
+					Matches a descendant element specified by "descendant" of elements specified by "ancestor".
 				</desc>
 				<longdesc>
 					
@@ -1670,7 +1673,7 @@ jQuery("div &gt; p").hide();
 					</html>
 				</example>
 			</selector>
-			<selector cat="Selectors" name="siblings" return="Array&lt;Element(s)&gt;" timestamp="2009-02-25T21:38:30Z">
+			<selector cat="Selectors" name="siblings" return="Array&lt;Element(s)&gt;" timestamp="2009-07-01T04:48:14Z">
 				<sample>
 					prev ~ siblings
 				</sample>
@@ -1723,7 +1726,7 @@ jQuery("div &gt; p").hide();
 						&lt;div&gt;div (doesn't match since before #prev)&lt;/div&gt;
   &lt;span id="prev"&gt;span#prev&lt;/span&gt;
   &lt;div&gt;div sibling&lt;/div&gt;
-  &lt;div&gt;div sibling &lt;div id="small"&gt;div neice&lt;/div&gt;&lt;/div&gt;
+  &lt;div&gt;div sibling &lt;div id="small"&gt;div niece&lt;/div&gt;&lt;/div&gt;
   &lt;span&gt;span sibling (not div)&lt;/span&gt;
   &lt;div&gt;div sibling&lt;/div&gt;
 					</html>
@@ -1839,7 +1842,7 @@ jQuery("div &gt; p").hide();
 					</html>
 				</example>
 			</selector>
-			<selector cat="Selectors" name="even" return="Array&lt;Element(s)&gt;" timestamp="2009-01-25T00:43:35Z">
+			<selector cat="Selectors" name="even" return="Array&lt;Element(s)&gt;" timestamp="2009-06-25T15:41:43Z">
 				<sample>
 					:even
 				</sample>
@@ -1847,7 +1850,7 @@ jQuery("div &gt; p").hide();
 					1.0
 				</added>
 				<desc>
-					Matches even elements, zero-indexed.
+					Matches even elements, zero-indexed.  See also odd
 				</desc>
 				<longdesc>
 					
@@ -1876,7 +1879,7 @@ jQuery("div &gt; p").hide();
 					</html>
 				</example>
 			</selector>
-			<selector cat="Selectors" name="odd" return="Array&lt;Element(s)&gt;" timestamp="2009-01-25T00:46:00Z">
+			<selector cat="Selectors" name="odd" return="Array&lt;Element(s)&gt;" timestamp="2009-06-25T15:40:19Z">
 				<sample>
 					:odd
 				</sample>
@@ -1884,7 +1887,7 @@ jQuery("div &gt; p").hide();
 					1.0
 				</added>
 				<desc>
-					Matches odd elements, zero-indexed.
+					Matches odd elements, zero-indexed.  See also even.
 				</desc>
 				<longdesc>
 					
@@ -2929,7 +2932,7 @@ The specified index is one-indexed, in contrast to :eq() which starts at zero.
 					</html>
 				</example>
 			</selector>
-			<selector cat="Selectors" name="text" return="Array&lt;Element(s)&gt;" timestamp="2009-03-10T15:47:59Z">
+			<selector cat="Selectors" name="text" return="Array&lt;Element(s)&gt;" timestamp="2009-11-05T14:10:39Z">
 				<sample>
 					:text
 				</sample>
@@ -2937,10 +2940,10 @@ The specified index is one-indexed, in contrast to :eq() which starts at zero.
 					1.0
 				</added>
 				<desc>
-					Matches all input elements of type text.
+					Matches all elements of type text.
 				</desc>
 				<longdesc>
-					Using this psuedo-selector like &lt;code&gt;$(':text')&lt;/code&gt; is equivalent to &lt;code&gt;$('*:text')&lt;/code&gt; which is a slow selector. It's recommended to do &lt;code&gt;$('input:text')&lt;/code&gt;.
+					Using this psuedo-selector like &lt;code&gt;$(':text')&lt;/code&gt; is equivalent to &lt;code&gt;$('*:text')&lt;/code&gt; which is a very slow selector. It's recommended to do &lt;code&gt;$('input:text')&lt;/code&gt;.
 				</longdesc>
 				<example>
 					<desc>
@@ -3463,56 +3466,6 @@ To select a set of associated radio buttons, you might use: &lt;code&gt;$('input
   &lt;/form&gt;
   &lt;div&gt;
   &lt;/div&gt;
-					</html>
-				</example>
-			</selector>
-			<selector cat="Selectors" name="hidden" return="Array&lt;Element(s)&gt;" timestamp="2009-02-26T21:06:52Z">
-				<sample>
-					:hidden
-				</sample>
-				<added>
-					1.0
-				</added>
-				<desc>
-					Matches all elements that are hidden.
-				</desc>
-				<longdesc>
-					How :hidden is calculated was changed in jQuery 1.3.2. Element assumed as hidden if it or its parents consumes no space in document. CSS visibility isn't taken into account. The [http://docs.jquery.com/Release:jQuery_1.3.2#:visible.2F:hidden_Overhauled release notes] outline the changes in more detail.
-				</longdesc>
-				<example>
-					<desc>
-						Shows all hidden divs and counts hidden inputs.
-					</desc>
-					<code>
-						
-    // in some browsers :hidden includes head, title, script, etc... so limit to body
-    $("span:first").text("Found " + $(":hidden", document.body).length + 
-                         " hidden elements total.");
-    $("div:hidden").show(3000);
-    $("span:last").text("Found " + $("input:hidden").length + " hidden inputs.");
-
-					</code>
-					<css>
-						
-  div { width:70px; height:40px; background:#ee77ff; margin:5px; float:left; }
-  span { display:block; clear:left; color:red; }
-  .starthidden { display:none; }
-  
-					</css>
-					<html>
-						&lt;span&gt;&lt;/span&gt;
-  &lt;div&gt;&lt;/div&gt;
-  &lt;div style="display:none;"&gt;Hider!&lt;/div&gt;
-  &lt;div&gt;&lt;/div&gt;
-  &lt;div class="starthidden"&gt;Hider!&lt;/div&gt;
-  &lt;div&gt;&lt;/div&gt;
-  &lt;form&gt;
-    &lt;input type="hidden" /&gt;
-    &lt;input type="hidden" /&gt;
-    &lt;input type="hidden" /&gt;
-  &lt;/form&gt;
-  &lt;span&gt;
-  &lt;/span&gt;
 					</html>
 				</example>
 			</selector>
@@ -4055,7 +4008,7 @@ $("div#result3").append($("p").hasClass("selected").toString());
 					</html>
 				</example>
 			</function>
-			<function cat="Attributes" name="toggleClass" return="jQuery" timestamp="2009-04-15T11:03:48Z">
+			<function cat="Attributes" name="toggleClass" return="jQuery" timestamp="2009-06-10T00:58:22Z">
 				<added>
 					1.0
 				</added>
@@ -4097,12 +4050,12 @@ $("div#result3").append($("p").hasClass("selected").toString());
 					</html>
 				</example>
 			</function>
-			<function cat="Attributes" name="toggleClass" return="jQuery" timestamp="2009-04-15T11:03:48Z">
+			<function cat="Attributes" name="toggleClass" return="jQuery" timestamp="2009-06-10T00:58:22Z">
 				<added>
 					1.3
 				</added>
 				<desc>
-					Adds the specified class if the switch is true, removes the specified class if the switch is false.
+					'''New in jQuery 1.3''' Adds the specified class if the switch is true, removes the specified class if the switch is false.
 				</desc>
 				<longdesc>
 					
@@ -4306,7 +4259,7 @@ $("div#result3").append($("p").hasClass("selected").toString());
 			</function>
 		</subcat>
 		<subcat value="Value">
-			<function cat="Attributes" name="val" return="String, Array" timestamp="2009-05-26T19:45:28Z">
+			<function cat="Attributes" name="val" return="String, Array" timestamp="2009-06-18T10:38:02Z">
 				<added>
 					1.0
 				</added>
@@ -4314,13 +4267,14 @@ $("div#result3").append($("p").hasClass("selected").toString());
 					Get the input value of the first matched element.
 				</desc>
 				<longdesc>
-					In jQuery 1.2, a value is now returned for all input elements, including selects. For multiple selects an array of values is returned.
+					A value is returned for all input elements, including selects and textareas. For multiple selects an array of values is returned.  
 
 For selects and checkboxes, see the 
 <![CDATA[<a href='Selectors/selected'>:selected</a>]]>					 and 
 <![CDATA[<a href='Selectors/checked'>:checked</a>]]>					 selectors, for example:
 &lt;pre&gt;
 $('select.foo option:selected').val();    // get the value from a dropdown select
+$('select.foo').val();                    // get the value from a dropdown select even easier
 $('input:checkbox:checked').val();        // get the value from a checked checkbox
 $('input:radio[name=bar]:checked').val(); // get the value from a set of radio buttons
 
@@ -4389,7 +4343,7 @@ $('input:radio[name=bar]:checked').val(); // get the value from a set of radio b
 					</html>
 				</example>
 			</function>
-			<function cat="Attributes" name="val" return="jQuery" timestamp="2009-05-26T19:45:28Z">
+			<function cat="Attributes" name="val" return="jQuery" timestamp="2009-06-18T10:38:02Z">
 				<added>
 					1.0
 				</added>
@@ -4432,7 +4386,7 @@ $('input:radio[name=bar]:checked').val(); // get the value from a set of radio b
 					</html>
 				</example>
 			</function>
-			<function cat="Attributes" name="val" return="jQuery" timestamp="2009-05-26T19:45:28Z">
+			<function cat="Attributes" name="val" return="jQuery" timestamp="2009-06-18T10:38:02Z">
 				<added>
 					1.2
 				</added>
@@ -4525,17 +4479,17 @@ $('input:radio[name=bar]:checked').val(); // get the value from a set of radio b
 					</html>
 				</example>
 			</function>
-			<function cat="Traversing" name="filter" return="jQuery" timestamp="2009-05-09T01:49:25Z">
+			<function cat="Traversing" name="filter" return="jQuery" timestamp="2009-11-13T18:00:56Z">
 				<added>
 					1.0
 				</added>
 				<desc>
-					Removes all elements from the set of matched elements that do not match the specified expression(s). 
+					Keeps only the elements from the set of matched elements that match the specified expression(s). 
 				</desc>
 				<longdesc>
 					This method is used to narrow down the results of a search.
 
-Provide a comma-separated list of expressions to apply multiple filters at once.
+Provide a comma-separated list of expressions to apply multiple filters at once (e.g. filter(".class1, .class2")).
 				</longdesc>
 				<params name="expr" type="Expression">
 					<desc>
@@ -4585,16 +4539,16 @@ Provide a comma-separated list of expressions to apply multiple filters at once.
 					</code>
 				</example>
 			</function>
-			<function cat="Traversing" name="filter" return="jQuery" timestamp="2009-05-09T01:49:25Z">
+			<function cat="Traversing" name="filter" return="jQuery" timestamp="2009-11-13T18:00:56Z">
 				<added>
 					1.0
 				</added>
 				<desc>
-					Removes all elements from the set of matched elements that do not match the specified function. 
+					Keeps only the elements from the set of matched elements where the specified function returns a non-false value. 
 				</desc>
 				<longdesc>
 					The function is called with a context equal to the current element (just like 
-<![CDATA[<a href='Core/each'>$.each</a>]]>					). If the function returns false, then the element is removed - anything else and the element is kept.
+<![CDATA[<a href='Core/each'>$.each</a>]]>					). If the function returns false, then the element is removed - anything else and the element is kept in the resulting set of matched elements.
 				</longdesc>
 				<params name="fn" type="Function">
 					<desc>
@@ -4648,7 +4602,7 @@ Provide a comma-separated list of expressions to apply multiple filters at once.
 					</code>
 				</example>
 			</function>
-			<function cat="Traversing" name="is" return="Boolean" timestamp="2009-01-25T04:14:53Z">
+			<function cat="Traversing" name="is" return="Boolean" timestamp="2009-07-27T12:47:24Z">
 				<added>
 					1.0
 				</added>
@@ -4716,7 +4670,7 @@ Provide a comma-separated list of expressions to apply multiple filters at once.
 					</desc>
 					<code>
 						
-    var isFormParent = $("input[@type='checkbox']").parent().is("form")
+    var isFormParent = $("input[type='checkbox']").parent().is("form")
     $("div").text("isFormParent = " + isFormParent);
 
 					</code>
@@ -4734,7 +4688,7 @@ Provide a comma-separated list of expressions to apply multiple filters at once.
 					</desc>
 					<code>
 						
-    var isFormParent = $("input[@type='checkbox']").parent().is("form")
+    var isFormParent = $("input[type='checkbox']").parent().is("form")
     $("div").text("isFormParent = " + isFormParent);
 
 					</code>
@@ -4747,7 +4701,7 @@ Provide a comma-separated list of expressions to apply multiple filters at once.
 					</html>
 				</example>
 			</function>
-			<function cat="Traversing" name="map" return="jQuery" timestamp="2009-01-25T04:15:31Z">
+			<function cat="Traversing" name="map" return="jQuery" timestamp="2009-06-02T14:07:58Z">
 				<added>
 					1.2
 				</added>
@@ -4822,7 +4776,7 @@ This is provided as a convenience method for using
         $(replacement[1]).append("Extra &lt;b&gt; - B&lt;/b&gt;");
       }
 
-      // replacment will be an dom element, null, 
+      // replacement will be an dom element, null, 
       // or an array of dom elements
       return replacement;
     });
@@ -4849,7 +4803,7 @@ This is provided as a convenience method for using
 					</html>
 				</example>
 			</function>
-			<function cat="Traversing" name="not" return="jQuery" timestamp="2009-01-25T04:16:11Z">
+			<function cat="Traversing" name="not" return="jQuery" timestamp="2009-10-04T01:19:02Z">
 				<added>
 					1.0
 				</added>
@@ -4861,7 +4815,7 @@ This is provided as a convenience method for using
 				</longdesc>
 				<params name="expr" type="String, DOMElement, Array&lt;DOMElement&gt;">
 					<desc>
-						An expression with which to remove matching elements, an element to remove from the set or a set of elements to remove from the jQuery set of matched elements.
+						An expression with which to remove matching elements, an element to remove from the set or a set of elements to remove from the jQuery set of matched elements. A jQuery object is also accepted.
 					</desc>
 				</params>
 				<example>
@@ -5031,7 +4985,7 @@ This is provided as a convenience method for using
 			</function>
 		</subcat>
 		<subcat value="Finding">
-			<function cat="Traversing" name="add" return="jQuery" timestamp="2009-01-25T04:18:02Z">
+			<function cat="Traversing" name="add" return="jQuery" timestamp="2009-10-04T01:19:58Z">
 				<added>
 					1.0
 				</added>
@@ -5043,7 +4997,7 @@ This is provided as a convenience method for using
 				</longdesc>
 				<params name="expr" type="String, DOMElement, Array&lt;DOMElement&gt;">
 					<desc>
-						An expression whose matched elements are added for String, a string of HTML to create on the fly for DOMElement or one or more Elements to add if an Array.
+						An expression whose matched elements are added for String, a string of HTML to create on the fly for DOMElement or one or more Elements to add if an Array. A jQuery object is also accepted.
 					</desc>
 				</params>
 				<example>
@@ -5239,7 +5193,7 @@ collection.css("background", "yellow");
 					</html>
 				</example>
 			</function>
-			<function cat="Traversing" name="closest" return="jQuery" timestamp="2009-01-27T13:11:03Z">
+			<function cat="Traversing" name="closest" return="jQuery" timestamp="2009-11-05T12:53:08Z">
 				<added>
 					1.3
 				</added>
@@ -5250,7 +5204,7 @@ collection.css("background", "yellow");
 					&lt;p&gt;Closest works by first looking at the current element to see if it matches the specified expression, if so it just returns the element itself. If it doesn't match then it will continue to traverse up the document, parent by parent, until an element is found that matches the specified expression. If no matching element is found then none will be returned.&lt;/p&gt;
 &lt;p&gt;Closest is especially useful for dealing with event delegation.&lt;/p&gt;
 				</longdesc>
-				<params name="expr" optional="false" type="String">
+				<params name="expr" type="String">
 					<desc>
 						An expression to filter the elements with.
 					</desc>
@@ -5377,7 +5331,7 @@ collection.css("background", "yellow");
 					</html>
 				</example>
 			</function>
-			<function cat="Traversing" name="next" return="jQuery" timestamp="2009-01-25T04:39:41Z">
+			<function cat="Traversing" name="next" return="jQuery" timestamp="2009-06-12T23:41:29Z">
 				<added>
 					1.0
 				</added>
@@ -5415,7 +5369,7 @@ You may provide an optional expression to filter the returned set.
 				</example>
 				<example>
 					<desc>
-						Find the very next sibling of each paragraph that has a class "selected".
+						Find the very next sibling of each paragraph. Keep only the ones with a class "selected".
 					</desc>
 					<code>
 						$("p").next(".selected").css("background", "yellow");
@@ -5501,19 +5455,22 @@ You may provide an optional expression to filter the returned set.
 					This is the first parent of the element that has position (as in relative or absolute). This method only works with visible elements.
 				</longdesc>
 			</function>
-			<function cat="Traversing" name="parent" return="jQuery" timestamp="2009-01-25T04:29:14Z">
+			<function cat="Traversing" name="parent" return="jQuery" timestamp="2009-06-12T22:12:59Z">
 				<added>
 					1.0
 				</added>
 				<desc>
-					Get a set of elements containing the unique parents of the matched set of elements.
+					Get the direct parent of an element. If called on a set of elements, parent returns a set of their unique direct parent elements.
 				</desc>
 				<longdesc>
-					You may use an optional expression to filter the set of parent elements that will match.  If there is no parent, returns a jQuery object with a length of 0.
+					You may use an optional expression to filter the element(s).  If there is no parent, returns a jQuery object with a length of 0.
+
+
+To get or query all ancestor elements, consider closest or parents.
 				</longdesc>
 				<params name="expr" optional="true" type="String">
 					<desc>
-						An expression to filter the parents with.
+						An expression to filter the parent with.
 					</desc>
 				</params>
 				<example>
@@ -5759,7 +5716,7 @@ Only the immediately previous sibling is returned, not all previous siblings.
 					</html>
 				</example>
 			</function>
-			<function cat="Traversing" name="siblings" return="jQuery" timestamp="2009-01-25T04:33:37Z">
+			<function cat="Traversing" name="siblings" return="jQuery" timestamp="2009-06-25T00:10:44Z">
 				<added>
 					1.0
 				</added>
@@ -5767,7 +5724,7 @@ Only the immediately previous sibling is returned, not all previous siblings.
 					Get a set of elements containing all of the unique siblings of each of the matched set of elements.
 				</desc>
 				<longdesc>
-					Can be filtered with an optional expressions. 
+					Can be filtered with an optional expression. 
 				</longdesc>
 				<params name="expr" optional="true" type="String">
 					<desc>
@@ -7111,7 +7068,7 @@ Can be filtered with an optional expression.
 	</cat>
 	<cat value="CSS">
 		<subcat value="CSS">
-			<function cat="CSS" name="css" return="String" timestamp="2009-05-27T22:08:08Z">
+			<function cat="CSS" name="css" return="String" timestamp="2009-08-06T09:07:47Z">
 				<added>
 					1.0
 				</added>
@@ -7153,7 +7110,7 @@ Can be filtered with an optional expression.
 					</html>
 				</example>
 			</function>
-			<function cat="CSS" name="css" return="jQuery" timestamp="2009-05-27T22:08:08Z">
+			<function cat="CSS" name="css" return="jQuery" timestamp="2009-08-06T09:07:47Z">
 				<added>
 					1.0
 				</added>
@@ -7236,7 +7193,7 @@ Be aware, however, that when the key contains a hyphen, such as "background-colo
 					</html>
 				</example>
 			</function>
-			<function cat="CSS" name="css" return="jQuery" timestamp="2009-05-27T22:08:08Z">
+			<function cat="CSS" name="css" return="jQuery" timestamp="2009-08-06T09:07:47Z">
 				<added>
 					1.0
 				</added>
@@ -7244,16 +7201,16 @@ Be aware, however, that when the key contains a hyphen, such as "background-colo
 					Set a single style property to a value on all matched elements.
 				</desc>
 				<longdesc>
-					If a number is provided, it is automatically converted into a pixel value.
+					If a number is provided, it is automatically converted into a pixel value, with the following exceptions: z-index, font-weight, opacity, zoom and line-height). To remove a style property from elements use an empty string value.
 				</longdesc>
 				<params name="name" type="String">
 					<desc>
 						The name of the property to set.
 					</desc>
 				</params>
-				<params name="value" type="String, Number">
+				<params name="value" type="String, Number, Callback">
 					<desc>
-						The value to set the property to.
+						The value to set the property to. In case of a Callback, the context is the to the DOM element to change.
 					</desc>
 				</params>
 				<example>
@@ -7376,6 +7333,17 @@ p.html( "left: " + offset.left + ", top: " + offset.top );
   
 					</html>
 				</example>
+			</function>
+			<function cat="Traversing" name="offsetParent" return="jQuery" timestamp="2009-01-25T04:28:44Z">
+				<added>
+					1.26
+				</added>
+				<desc>
+					Returns a jQuery collection with the positioned parent of the first matched element.
+				</desc>
+				<longdesc>
+					This is the first parent of the element that has position (as in relative or absolute). This method only works with visible elements.
+				</longdesc>
 			</function>
 			<function cat="CSS" name="position" return="Object{top,left}" timestamp="2009-01-26T02:00:12Z">
 				<added>
@@ -7542,7 +7510,7 @@ overflow:auto;
 			</function>
 		</subcat>
 		<subcat value="Height and Width">
-			<function cat="CSS" name="height" return="Integer" timestamp="2009-01-26T02:16:46Z">
+			<function cat="CSS" name="height" return="Integer" timestamp="2009-07-02T12:50:32Z">
 				<added>
 					1.0
 				</added>
@@ -7551,6 +7519,11 @@ overflow:auto;
 				</desc>
 				<longdesc>
 					In jQuery 1.2, this method is able to find the height of the window and document.
+
+&lt;pre&gt;
+$(window).height();   // returns height of browser viewport
+$(document).height(); // returns height of HTML document
+&lt;/pre&gt;
 				</longdesc>
 				<example>
 					<desc>
@@ -7592,7 +7565,7 @@ overflow:auto;
 					</html>
 				</example>
 			</function>
-			<function cat="CSS" name="height" return="jQuery" timestamp="2009-01-26T02:16:46Z">
+			<function cat="CSS" name="height" return="jQuery" timestamp="2009-07-02T12:50:32Z">
 				<added>
 					1.0
 				</added>
@@ -7911,7 +7884,7 @@ $("p:last").text( "outerWidth:" + p.outerWidth()+ " , outerWidth(true):" + p.out
 			</function>
 		</subcat>
 		<subcat value="Event Handling">
-			<function cat="Events" name="bind" return="jQuery" timestamp="2009-03-30T06:09:02Z">
+			<function cat="Events" name="bind" return="jQuery" timestamp="2009-10-22T01:25:04Z">
 				<added>
 					1.0
 				</added>
@@ -7919,7 +7892,7 @@ $("p:last").text( "outerWidth:" + p.outerWidth()+ " , outerWidth(true):" + p.out
 					Binds a handler to one or more events (like click) for each matched element.  Can also bind custom events.
 				</desc>
 				<longdesc>
-					'''Possible event values:''' &lt;code&gt;blur&lt;/code&gt;, &lt;code&gt;focus&lt;/code&gt;, &lt;code&gt;load&lt;/code&gt;, &lt;code&gt;resize&lt;/code&gt;, &lt;code&gt;scroll&lt;/code&gt;, &lt;code&gt;unload&lt;/code&gt;, &lt;code&gt;beforeunload&lt;/code&gt;, &lt;code&gt;click&lt;/code&gt;, &lt;code&gt;dblclick&lt;/code&gt;, &lt;code&gt; mousedown&lt;/code&gt;, &lt;code&gt;mouseup&lt;/code&gt;, &lt;code&gt;mousemove&lt;/code&gt;, &lt;code&gt;mouseover&lt;/code&gt;, &lt;code&gt;mouseout&lt;/code&gt;, &lt;code&gt;mouseenter&lt;/code&gt;, &lt;code&gt;mouseleave&lt;/code&gt;, &lt;code&gt;change&lt;/code&gt;, &lt;code&gt;select&lt;/code&gt;, &lt;code&gt; submit&lt;/code&gt;, &lt;code&gt;keydown&lt;/code&gt;, &lt;code&gt;keypress&lt;/code&gt;, &lt;code&gt;keyup&lt;/code&gt;, &lt;code&gt;error&lt;/code&gt;
+					'''Possible event values:''' &lt;code&gt;blur&lt;/code&gt;, &lt;code&gt;focus&lt;/code&gt;, &lt;code&gt;load&lt;/code&gt;, &lt;code&gt;resize&lt;/code&gt;, &lt;code&gt;scroll&lt;/code&gt;, &lt;code&gt;unload&lt;/code&gt;, &lt;code&gt;beforeunload&lt;/code&gt;, &lt;code&gt;click&lt;/code&gt;, &lt;code&gt;dblclick&lt;/code&gt;, &lt;code&gt; mousedown&lt;/code&gt;, &lt;code&gt;mouseup&lt;/code&gt;, &lt;code&gt;mousemove&lt;/code&gt;, &lt;code&gt;mouseover&lt;/code&gt;, &lt;code&gt;mouseout&lt;/code&gt;, &lt;code&gt;mouseenter&lt;/code&gt;, &lt;code&gt;mouseleave&lt;/code&gt;, &lt;code&gt;change&lt;/code&gt;, &lt;code&gt;select&lt;/code&gt;, &lt;code&gt; submit&lt;/code&gt;, &lt;code&gt;keydown&lt;/code&gt;, &lt;code&gt;keypress&lt;/code&gt;, &lt;code&gt;keyup&lt;/code&gt;, &lt;code&gt;error&lt;/code&gt;, &lt;code&gt;ready&lt;/code&gt;
 
 The event handler is passed an 
 <![CDATA[<a href='Events/jQuery.Event'>event object</a>]]>					 that you can use to prevent default behaviour. To stop both default action and event bubbling, your handler has to return false. Note that this will prevent handlers on parent elements from running but not other jQuery handlers on the same element. The full list of properties that are available on the event object can be found in the 
@@ -8028,7 +8001,8 @@ $("p").bind("click", {foo: "bar"}, handler)
 					</desc>
 					<code>
 						$("form").bind("submit", function(event){
-  event.stopPropagation();
+  if( event.stopPropagation ) { event.stopPropagation(); } //For 'Good' browsers
+  else { event.cancelBubble = true; } //For IE
 });
 					</code>
 				</example>
@@ -8318,7 +8292,7 @@ $("body").trigger(event);
 					</html>
 				</example>
 			</function>
-			<function cat="Events" name="unbind" return="jQuery" timestamp="2009-01-26T02:19:34Z">
+			<function cat="Events" name="unbind" return="jQuery" timestamp="2009-08-03T15:16:24Z">
 				<desc>
 					This does the opposite of bind, it removes bound events from each of the matched elements.
 				</desc>
@@ -8329,7 +8303,7 @@ $("body").trigger(event);
 				</longdesc>
 				<params name="type " optional="true" type="String,Event,Object">
 					<desc>
-						An event type to unbind.
+						One or more event types separated by a space.
 					</desc>
 				</params>
 				<params name="fn " optional="true" type="Function">
@@ -8403,7 +8377,7 @@ $("p").unbind("click", foo); // ... foo will no longer be called.
 			</function>
 		</subcat>
 		<subcat value="Live Events">
-			<function cat="Events" name="live" return="jQuery" timestamp="2009-01-26T02:22:52Z">
+			<function cat="Events" name="live" return="jQuery" timestamp="2009-10-30T15:40:42Z">
 				<added>
 					1.3
 				</added>
@@ -8417,7 +8391,7 @@ $("p").unbind("click", foo); // ... foo will no longer be called.
 
 &lt;p&gt;This method works and behaves very similarly to jQuery's bind method but with a few important distinctions:&lt;/p&gt;
 * When you bind a "live" event it will bind to all current and future elements on the page (using [http://www.sitepoint.com/blogs/2008/07/23/javascript-event-delegation-is-easier-than-you-think/ event delegation]). For example if you bound a live click to all "li" elements on the page then added another li at a later time - that click event would continue to work for the new element (this is not the case with bind which must be re-bound on all new elements).
-* Live events do not bubble in the traditional manner and cannot be stopped using stopPropagation or stopImmediatePropagation. For example, take the case of two click events - one bound to "li" and another "li a". Should a click occur on the inner anchor BOTH events will be triggered. This is because when a &lt;code&gt;$("li").bind("click", fn);&lt;/code&gt; is bound you're actually saying "Whenever a click event occurs on an LI element - or inside an LI element - trigger this click event."
+* Live events do not bubble in the traditional manner and cannot be stopped using stopPropagation or stopImmediatePropagation. For example, take the case of two click events - one bound to "li" and another "li a". Should a click occur on the inner anchor BOTH events will be triggered. This is because when a &lt;code&gt;$("li").bind("click", fn);&lt;/code&gt; is bound you're actually saying "Whenever a click event occurs on an LI element - or inside an LI element - trigger this click event."  To stop further processing for a live event, &lt;code&gt;fn&lt;/code&gt; must return false. This also means, that if any of the parent nodes for the "li" has a click event handler that returns false, the click event will never reach the document node, and as a consequence the live event will never be triggered.
 * Live events currently only work when used against a selector. For example, this would work: &lt;code&gt;$("li a").live(...)&lt;/code&gt; but this would not: &lt;code&gt;$("a", someElement).live(...)&lt;/code&gt; and neither would this: &lt;code&gt;$("a").parent().live(...)&lt;/code&gt;.
 
 &lt;p&gt;.live() behaves similarly to the popular [http://plugins.jquery.com/project/livequery liveQuery] plugin but with a few major differences:&lt;/p&gt;
@@ -8694,7 +8668,7 @@ $("p").die("click", foo); // ... foo will no longer be called.
 					</code>
 				</example>
 			</function>
-			<function cat="Events" name="toggle" return="jQuery" timestamp="2009-02-09T10:23:11Z">
+			<function cat="Events" name="toggle" return="jQuery" timestamp="2009-06-04T15:49:58Z">
 				<desc>
 					Toggle among two or more function calls every other click.
 				</desc>
@@ -8838,7 +8812,7 @@ $("p").die("click", foo); // ... foo will no longer be called.
 					</html>
 				</example>
 			</function>
-			<function cat="Events" name="change" return="jQuery" timestamp="2009-04-14T08:30:15Z">
+			<function cat="Events" name="change" return="jQuery" timestamp="2009-11-06T13:53:32Z">
 				<added>
 					1.0
 				</added>
@@ -8846,10 +8820,10 @@ $("p").die("click", foo); // ... foo will no longer be called.
 					Triggers the change event of each matched element.
 				</desc>
 				<longdesc>
-					This causes all of the functions that have been bound to that change event to be executed, and calls the browser's default change action on the matching element(s). This default action can be prevented by returning false from one of the functions bound to the change event. The change event usually fires when a control loses the input focus and its value has been modified since gaining focus.
+					This causes all of the functions that have been bound to that change event to be executed, and calls the browser's default change action on the matching element(s). This default action can be prevented by returning false from one of the functions bound to the change event. The change event usually fires when a control loses the input focus and its value has been modified since gaining focus. 
 				</longdesc>
 			</function>
-			<function cat="Events" name="change" return="jQuery" timestamp="2009-04-14T08:30:15Z">
+			<function cat="Events" name="change" return="jQuery" timestamp="2009-11-06T13:53:32Z">
 				<added>
 					1.0
 				</added>
@@ -8912,7 +8886,7 @@ $("p").die("click", foo); // ... foo will no longer be called.
 					</code>
 				</example>
 			</function>
-			<function cat="Events" name="click" return="jQuery" timestamp="2009-03-13T22:14:31Z">
+			<function cat="Events" name="click" return="jQuery" timestamp="2009-11-11T17:04:35Z">
 				<added>
 					1.0
 				</added>
@@ -8931,7 +8905,7 @@ $("p").die("click", foo); // ... foo will no longer be called.
 					</code>
 				</example>
 			</function>
-			<function cat="Events" name="click" return="jQuery" timestamp="2009-03-13T22:14:31Z">
+			<function cat="Events" name="click" return="jQuery" timestamp="2009-11-11T17:04:35Z">
 				<added>
 					1.0
 				</added>
@@ -8944,6 +8918,9 @@ $("p").die("click", foo); // ... foo will no longer be called.
 				<params name="fn" type="Function">
 					<desc>
 						A function to bind to the click event on each of the matched elements.
+
+Return 'false' or invoke 
+<![CDATA[<a href='Events/jQuery.Event#event.preventDefault.28.29'>eventObject.preventDefault()</a>]]>						 to cancel event propagation.  This prevents the browser's default action (such as navigation on a link).
 &lt;pre&gt;function callback(eventObject) {
   this; // dom element
 }
@@ -9883,7 +9860,7 @@ Note: Do not confuse the "select" event with the "
 					</html>
 				</example>
 			</function>
-			<function cat="Events" name="submit" return="jQuery" timestamp="2009-01-26T02:38:44Z">
+			<function cat="Events" name="submit" return="jQuery" timestamp="2009-06-30T15:46:02Z">
 				<desc>
 					Trigger the submit event of each matched element.
 				</desc>
@@ -9899,12 +9876,12 @@ Note: Do not confuse the "select" event with the "
 					</code>
 				</example>
 			</function>
-			<function cat="Events" name="submit" return="jQuery" timestamp="2009-01-26T02:38:44Z">
+			<function cat="Events" name="submit" return="jQuery" timestamp="2009-06-30T15:46:02Z">
 				<desc>
 					Bind a function to the submit event of each matched element.
 				</desc>
 				<longdesc>
-					The select event fires when a form is submitted
+					The submit event fires when a form is submitted
 				</longdesc>
 				<params name="fn" type="Function">
 					<desc>
@@ -9989,7 +9966,7 @@ Note: Do not confuse the "select" event with the "
 	</cat>
 	<cat value="Effects">
 		<subcat value="Basics">
-			<function cat="Effects" name="show" return="jQuery" timestamp="2009-01-26T03:58:39Z">
+			<function cat="Effects" name="show" return="jQuery" timestamp="2009-07-09T21:38:22Z">
 				<added>
 					1.0
 				</added>
@@ -10012,7 +9989,7 @@ Note: Do not confuse the "select" event with the "
 					</html>
 				</example>
 			</function>
-			<function cat="Effects" name="show" return="jQuery" timestamp="2009-01-26T03:58:39Z">
+			<function cat="Effects" name="show" return="jQuery" timestamp="2009-07-09T21:38:22Z">
 				<added>
 					1.0
 				</added>
@@ -10122,7 +10099,7 @@ Note: Do not confuse the "select" event with the "
   &lt;span&gt;Are you sure? (type 'yes' if you are) &lt;/span&gt;
   &lt;div&gt;
     &lt;form&gt;
-      &lt;input type="text" /&gt;
+      &lt;input type="text"  value="as;ldkfjalsdf"/&gt;
     &lt;/form&gt;
   &lt;/div&gt;
   &lt;p style="display:none;"&gt;I'm hidden...&lt;/p&gt;
@@ -10265,7 +10242,7 @@ Note: Do not confuse the "select" event with the "
 					</html>
 				</example>
 			</function>
-			<function cat="Effects" name="toggle" return="jQuery" timestamp="2009-02-26T08:46:52Z">
+			<function cat="Effects" name="toggle" return="jQuery" timestamp="2009-09-24T02:29:33Z">
 				<added>
 					1.0
 				</added>
@@ -10293,7 +10270,7 @@ Note: Do not confuse the "select" event with the "
 					</html>
 				</example>
 			</function>
-			<function cat="Effects" name="toggle" return="jQuery" timestamp="2009-02-26T08:46:52Z">
+			<function cat="Effects" name="toggle" return="jQuery" timestamp="2009-09-24T02:29:33Z">
 				<added>
 					1.3
 				</added>
@@ -10301,7 +10278,7 @@ Note: Do not confuse the "select" event with the "
 					Toggle displaying each of the set of matched elements based upon the switch (true shows all elements, false hides all elements).
 				</desc>
 				<longdesc>
-					If the switch is true, toggle makes them hidden (using the hide method). If the switch is false, toggle makes them shown (using the show method).
+					If the switch is false, toggle makes them hidden (using the hide method). If the switch is true, toggle makes them shown (using the show method).
 				</longdesc>
 				<params name="switch" type="Boolean">
 					<desc>
@@ -10327,7 +10304,7 @@ Note: Do not confuse the "select" event with the "
 					</html>
 				</example>
 			</function>
-			<function cat="Effects" name="toggle" return="jQuery" timestamp="2009-02-26T08:46:52Z">
+			<function cat="Effects" name="toggle" return="jQuery" timestamp="2009-09-24T02:29:33Z">
 				<added>
 					1.0
 				</added>
@@ -11662,7 +11639,7 @@ option to false, the automatic conversion of data to strings is prevented.
 					</code>
 				</example>
 			</function>
-			<function cat="Ajax" name="jQuery.get" return="XMLHttpRequest" timestamp="2009-01-26T18:52:39Z">
+			<function cat="Ajax" name="jQuery.get" return="XMLHttpRequest" timestamp="2009-08-27T01:49:07Z">
 				<added>
 					1.0
 				</added>
@@ -11671,6 +11648,9 @@ option to false, the automatic conversion of data to strings is prevented.
 				</desc>
 				<longdesc>
 					This is an easy way to send a simple GET request to a server without having to use the more complex $.ajax function. It allows a single callback function to be specified that will be executed when the request is complete (and only if the response has a successful response code). If you need to have both error and success callbacks, you may want to use $.ajax.
+
+
+$.get() returns the XMLHttpRequest that it creates. In most cases you won't need that object to manipulate directly, but it is available if you need to abort the request manually.
 				</longdesc>
 				<params name="url" type="String">
 					<desc>
@@ -11743,7 +11723,7 @@ option to false, the automatic conversion of data to strings is prevented.
 					</code>
 				</example>
 			</function>
-			<function cat="Ajax" name="jQuery.getJSON" return="XMLHttpRequest" timestamp="2009-04-09T02:22:51Z">
+			<function cat="Ajax" name="jQuery.getJSON" return="XMLHttpRequest" timestamp="2009-11-06T20:34:00Z">
 				<added>
 					1.0
 				</added>
@@ -11751,10 +11731,13 @@ option to false, the automatic conversion of data to strings is prevented.
 					Load JSON data using an HTTP GET request.
 				</desc>
 				<longdesc>
-					As of jQuery 1.2, you can load JSON data located on another domain if you specify a [http://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/ JSONP] callback, which can be done like so: "myurl?callback=?". jQuery automatically replaces the ? with the correct method name to call, calling your specified callback. This callback parameter may vary depending on API, for instance Yahoo Pipes requires "_callback=?"
+					As of jQuery 1.2, you can load JSON data located on another domain if you specify a [http://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/ JSONP] callback.
 
+The callback takes the form "example.com?callback=?". jQuery automatically replaces the '?' with a random method name that doesn't clash with the global scope. You '''do not''' have to specify the method name yourself.
 
-Note: Keep in mind, that lines after this function will be executed before callback.
+Note that the site you're trying to call needs to support JSON-P output. The callback parameter might vary depending on the API, for instance Yahoo Pipes requires "_callback=?"
+
+Keep in mind, that lines after this function will be executed before the callback.
 				</longdesc>
 				<params name="url" type="String">
 					<desc>
@@ -11771,8 +11754,7 @@ Note: Keep in mind, that lines after this function will be executed before callb
 						A function to be executed whenever the data is loaded successfully.
 &lt;pre&gt;function (data, textStatus) {
   // data will be a jsonObj
-  // textStatus will be one of the following values: 
-  //   "timeout","error","notmodified","success","parsererror"
+  // textStatus will be "success"
   this; // the options for this ajax request
 }
 &lt;/pre&gt;
@@ -11836,17 +11818,17 @@ function dates(datos)
 					</code>
 				</example>
 			</function>
-			<function cat="Ajax" name="jQuery.getScript" return="XMLHttpRequest" timestamp="2009-01-26T18:45:47Z">
+			<function cat="Ajax" name="jQuery.getScript" return="XMLHttpRequest" timestamp="2009-10-20T23:05:38Z">
 				<added>
 					1.0
 				</added>
 				<desc>
-					Loads, and executes, a local JavaScript file using an HTTP GET request.
+					Loads and executes a JavaScript file using an HTTP GET request.
 				</desc>
 				<longdesc>
 					Before jQuery 1.2, getScript was only able to load scripts from the same domain as the original page. As of 1.2, you can now load JavaScript files from any domain.
 
-Warning: Safari 2 and older is unable to evaluate scripts in a global context synchronously. If you load functions via getScript, make sure to call them after a delay.
+'''Warning''': In Safari version 2 and older it's not possible to evaluate scripts in a global context synchronously. If you load functions via getScript, make sure to call them ''after'' a delay.
 				</longdesc>
 				<params name="url" type="String">
 					<desc>
@@ -11908,7 +11890,7 @@ Warning: Safari 2 and older is unable to evaluate scripts in a global context sy
 					</code>
 				</example>
 			</function>
-			<function cat="Ajax" name="jQuery.post" return="XMLHttpRequest" timestamp="2009-01-26T18:45:29Z">
+			<function cat="Ajax" name="jQuery.post" return="XMLHttpRequest" timestamp="2009-08-27T01:51:22Z">
 				<added>
 					1.0
 				</added>
@@ -11919,15 +11901,16 @@ Warning: Safari 2 and older is unable to evaluate scripts in a global context sy
 					This is an easy way to send a simple POST request to a server without having to use the more complex $.ajax function. It allows a single callback function to be specified that will be executed when the request is complete (and only if the response has a successful response code).
 The returned data format can be specified by the fourth parameter.
 If you need to have both error and success callbacks, you may want to use $.ajax. $.post is a (simplified) wrapper function for $.ajax.
+$.post() returns the XMLHttpRequest that it creates. In most cases you won't need that object to manipulate directly, but it is available if you need to abort the request manually.
 				</longdesc>
 				<params name="url" type="String">
 					<desc>
 						The URL of the page to load.
 					</desc>
 				</params>
-				<params name="data" optional="true" type="Map">
+				<params name="data" optional="true" type="Map, String">
 					<desc>
-						Key/value pairs that will be sent to the server.
+						Key/value pairs or the return value of the .serialize() function that will be sent to the server.
 					</desc>
 				</params>
 				<params name="callback" optional="true" type="Function">
@@ -11980,6 +11963,14 @@ If you need to have both error and success callbacks, you may want to use $.ajax
 					</desc>
 					<code>
 						 $.post("test.php", { 'choices[]': ["Jon", "Susan"] });
+					</code>
+				</example>
+				<example>
+					<desc>
+						send form data using ajax requests
+					</desc>
+					<code>
+						 $.post("test.php", $("#testform").serialize());
 					</code>
 				</example>
 				<example>
@@ -12461,12 +12452,12 @@ Note that &lt;code&gt;serializeArray()&lt;/code&gt; only works on &lt;code&gt;fo
 					</results>
 				</example>
 			</property>
-			<property cat="Utilities" name="jQuery.browser" return="Map" timestamp="2009-01-26T21:53:02Z">
+			<property cat="Utilities" name="jQuery.browser" return="Map" timestamp="2009-11-06T22:50:07Z">
 				<added>
 					1.0
 				</added>
 				<desc>
-					'''Deprecated in jQuery 1.3 (see jQuery.support)''' Contains flags for the useragent, read from navigator.userAgent.
+					'''We recommend against using this property, please try to use feature detection instead (see jQuery.support).''' Contains flags for the useragent, read from navigator.userAgent. While jQuery.browser will not be removed from future versions of jQuery, every effort to use jQuery.support and proper feature detection should be made.
 				</desc>
 				<longdesc>
 					Available flags are:
@@ -12474,12 +12465,6 @@ Note that &lt;code&gt;serializeArray()&lt;/code&gt; only works on &lt;code&gt;fo
 * opera
 * msie
 * mozilla
-
-This property is available before the DOM is ready, therefore you can use it to add ready events only for certain browsers.
-
-There are situations where object detection is not reliable enough, in such cases it makes sense to use browser detection.
-
-A combination of browser and object detection yields quite reliable results. 
 				</longdesc>
 				<example>
 					<desc>
@@ -12548,7 +12533,7 @@ A combination of browser and object detection yields quite reliable results.
 					</code>
 				</example>
 			</property>
-			<property cat="Utilities" name="jQuery.browser.version" return="String" timestamp="2009-01-26T21:52:45Z">
+			<property cat="Utilities" name="jQuery.browser.version" return="String" timestamp="2009-10-20T12:00:01Z">
 				<added>
 					1.1.3
 				</added>
@@ -12561,6 +12546,8 @@ A combination of browser and object detection yields quite reliable results.
 * Mozilla/Firefox/Flock/Camino: 1.7.12, 1.8.1.3, 1.9
 * Opera: 9.20
 * Safari/Webkit: 312.8, 418.9
+
+Note that IE8 claims to be 7 in Compatibility View.
 				</longdesc>
 				<example>
 					<desc>
@@ -12742,7 +12729,7 @@ If you wish to break the each() loop at a particular iteration you can do so by 
 					</code>
 				</example>
 			</function>
-			<function cat="Utilities" name="jQuery.extend" return="Object" timestamp="2009-04-15T17:17:59Z">
+			<function cat="Utilities" name="jQuery.extend" return="Object" timestamp="2009-11-18T03:41:26Z">
 				<added>
 					1.0
 				</added>
@@ -12796,7 +12783,7 @@ jQuery.extend(settings, options);
 						Merge defaults and options, without modifying the defaults.
 					</desc>
 					<code>
-						var empty = {}
+						var empty = {};
 var defaults = { validate: false, limit: 5, name: "foo" };
 var options = { validate: true, name: "bar" };
 var settings = $.extend(empty, defaults, options);
@@ -12807,15 +12794,15 @@ empty == { validate: true, limit: 5, name: "bar" }
 					</results>
 				</example>
 			</function>
-			<function cat="Utilities" name="jQuery.grep" return="Array" timestamp="2009-05-17T22:02:23Z">
+			<function cat="Utilities" name="jQuery.grep" return="Array" timestamp="2009-07-06T03:25:22Z">
 				<added>
 					1.0
 				</added>
 				<desc>
-					Filter items out of an array, by using a filter function.
+					Finds the elements of an array which satisfy a filter function. The original array is not affected.
 				</desc>
 				<longdesc>
-					The filter function will be passed two arguments: The current array item and its index. The filter function must return 'true' to keep the item in the array.
+					The filter function will be passed two arguments: the current array item and its index. The filter function must return 'true' to include the item in the result array.
 				</longdesc>
 				<params name="array" type="Array">
 					<desc>
@@ -12842,7 +12829,7 @@ empty == { validate: true, limit: 5, name: "bar" }
 				</params>
 				<example>
 					<desc>
-						Filters the original array of numbers leaving that are not 5 and have an index greater than 4.  Then it removes all 9s while inverting it.
+						Filters the original array of numbers leaving that are not 5 and have an index greater than 4.  Then it removes all 9s.
 					</desc>
 					<code>
 						
